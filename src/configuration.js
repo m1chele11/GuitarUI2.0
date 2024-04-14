@@ -1,6 +1,6 @@
 const mode = 0;
 const host_local = "http://localhost:8080";
-const host_remote = "https://c322-spring2024-homework2-latest-1.onrender.com";
+const host_remote = "https://hw08-latest.onrender.com";
 
 function getHost() {
     return mode === 0 ? host_local : host_remote;
