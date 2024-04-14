@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guitar Inventory Management</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fdf6e3;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 60%;
+      margin: 2em auto;
+      padding: 2em;
+      background-color: #fffff0;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      background-color: #f8f1e7;
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      margin: 0;
+      color: black; /* Add this line to set the color to black */
+
+    }
+
+    .nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: brown;
+      background: #fdf6e3;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .form-container {
+      display: none;
+    }
+
+    .form-container.active {
+      display: block;
+    }
+
+    .form-title {
+      color: #8b4513;
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 0.5em;
+    }
+
+    .form-container form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-container input[type="text"] {
+      font-size: 1em;
+      padding: 0.5em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .form-container input[type="submit"] {
+      font-size: 1em;
+      padding: 0.5em;
+      color: white;
+      background-color: #8b4513;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: auto;
+    }
+
+    .form-container input[type="submit"]:hover {
+      background-color: #a0522d;
+    }
+
+    .header a {
+      text-decoration: none;
+      color: brown;
+    }
+    #addGuitarButton {
+  font-size: 1em;
+  padding: 0.5em;
+  color: white;
+  background-color: brown;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: auto;
+}
+
+#addGuitarButton:hover {
+  background-color: #8b4513;
+}
+  </style>
+    <link rel="stylesheet" href="navbar.css">
+
+</head>
+<link rel="stylesheet" href="navbar.css">
+
+<body>
+  <ul class="topnav">
+    <li><a href="inventoryManagement.html">Home</a></li>
+    <li><a class="active" href="addGuitar.html">Add Guitar</a></li>        
+    <li><a  href="searchGuitar.html">Search Guitar</a></li>
+    <li><a href="about.html">about</a></li>
+    <li class="right"><a  href="login.html">Login</a></li>
+  </ul>
+
+
+    <div id="addGuitarPage" class="form-container active">
+      <h1 class="form-title">Add Guitar</h1>
+      <form id="addGuitarForm">
+        <input type="text" id="serialNumber" name="serialNumber" placeholder="Serial number">
+        <input type="text" id="price" name="price" placeholder="Price">
+        <input type="text" id="builder" name="builder" placeholder="Builder">
+        <input type="text" id="model" name="model" placeholder="Model">
+        <input type="text" id="type" name="type" placeholder="Type">
+        <input type="text" id="backWood" name="backWood" placeholder="Back wood">
+        <input type="text" id="topWood" name="topWood" placeholder="Top wood">
+        <button id="addGuitarButton">Add Guitar</button>
+      </form>
+    </div>
+  </div>
+  <script src="configuration.js"></script>
+
+  <script>
+  let host = configuration.host();
+      let remoteHost = "https://c322-spring2024-homework2-latest-y2km.onrender.com";
+       // Add an event listener to the form submission
+       document.getElementById("addGuitarForm").addEventListener("submit", async function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    
+    let message = "";
+    let serialNumber = document.getElementById("serialNumber").value;
+    let price = document.getElementById("price").value;
+    let builder = document.getElementById("builder").value;
+    let model = document.getElementById("model").value;
+    let type = document.getElementById("type").value;
+    let backWood = document.getElementById("backWood").value;
+    let topWood = document.getElementById("topWood").value;
+    const guitarData = {
+      serialNumber: serialNumber,
+      price: price,
+      builder: builder,
+      model: model,
+      type: type,
+      backWood: backWood,
+      topWood: topWood
+    };
+    console.log("Guitar data:", guitarData);
+    const token = getTheToken();
+
+    let request = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(guitarData)
+    };
+    let response = await fetch(host + "/inventory", request);
+    if (response.status === 200) {
+      message = "Guitar added successfully!";
+    } else {
+      message = "Failed to add guitar!";
+    }
+    window.alert(message);
+  });
+
+  async function logout() {
+            removeTheToken();
+          }
+  </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guitar Inventory Management</title>
+  <link rel="stylesheet" href="navbar.css">
+  <script src="configuration.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fdf6e3;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 60%;
+      margin: 2em auto;
+      padding: 2em;
+      background-color: #fffff0;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container {
+      display: none;
+    }
+
+    .form-container.active {
+      display: block;
+    }
+
+    .header {
+      background-color: #f8f1e7;
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      margin: 0;
+      color: black;
+    }
+    .header a {
+      text-decoration: none;
+      color: brown;
+    }
+
+    .nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: brown;
+      background: #fdf6e3;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .invisible-button {
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+      color: inherit;
+    }
+
+    .active {
+      display: block;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <ul class="topnav">
+    <li><a class="active" href="inventoryManagement.html">Home</a></li>
+    <li><a href="addGuitar.html">Add Guitar</a></li>        
+    <li><a  href="searchGuitar.html">Search Guitar</a></li>
+    <li><a href="about.html">about</a></li>
+    <li class="right"><a  href="login.html">Login</a></li>
+  </ul>
+
+      <img src="guitarphoto.png" alt="">
+    </div>
+  </div>
+</body>
+</html>

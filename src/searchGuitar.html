@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guitar Inventory Management - Search</title>
+  <link rel="stylesheet" href="searchGuitar.css">
+  <link rel="stylesheet" href="navbar.css">
+
+  <script src="searchGuitar.js"></script>
+  <script src="configuration.js"></script>
+
+</head>
+<body>
+  <ul class="topnav">
+    <li><a href="inventoryManagement.html">Home</a></li>
+    <li><a href="addGuitar.html">Add Guitar</a></li>        
+    <li><a class="active" href="searchGuitar.html">Search Guitar</a></li>
+    <li><a href="about.html">about</a></li>
+    <li class="right"><a  href="login.html">Login</a></li>
+  </ul>
+
+    <div id="searchGuitarPage" class="form-container active">
+      <h1 class="form-title">Search Guitar</h1>
+      <form class="search-form">
+        <label for="builder">Builder:</label>
+        <input type="text" id="builder" name="builder">
+
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model">
+
+        <label for="type">Type:</label>
+        <input type="text" id="type" name="type">
+
+        <label for="backWood">Back wood:</label>
+        <input type="text" id="backWood" name="backWood">
+
+        <label for="topWood">Top wood:</label>
+        <input type="text" id="topWood" name="topWood">
+        <button type="button" class="search-button" onclick="searchGuitar()">Search</button>
+      </form>
+      <div id="searchResults" class="search-results">
+        <table id="searchTable">
+          <thead>
+            <tr>
+              <th>Serial number</th>
+              <th>Builder</th>
+              <th>Model</th>
+              <th>Type</th>
+              <th>Back wood</th>
+              <th>Top wood</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  
+</body>
+</html>
